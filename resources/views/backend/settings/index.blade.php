@@ -27,7 +27,11 @@
                             <td>{{$adminSettings->settings_key}}</td>
                             <td>{{$adminSettings->settings_type}}</td>
                             <td width="5"><a href="javascript:void(0)"><i class="fa fa-pencil-square"></i></a></td>
-                            <td width="5"><a href="javascript:void(0)"><i class="fa fa-trash-o"></i></a></td>
+                            <td width="5">
+                                @if($adminSettings->settings_delete)
+                                    <a href="javascript:void(0)"><i id="{{$adminSettings->id}}" class="fa fa-trash-o"></i></a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -68,6 +72,18 @@
             });
             $('#sortable').disableSelection();
 
+        });
+
+        $(".fa-trash-o").click(function (){
+            destroy_id = $(this).attr('id');
+            alertify.confirm('Silme İşlemini Onaylayın','Bu İşlem Geri Alınamaz',
+                function (){
+                    location.href = "/nedmin/settings/delete/" + destroy_id;
+                },
+                function (){
+                    alertify.error("Silme İşlemi İptal Edildi");
+                }
+            )
         });
     </script>
 

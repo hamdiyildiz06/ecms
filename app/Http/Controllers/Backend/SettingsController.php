@@ -28,4 +28,14 @@ class SettingsController extends Controller
          echo true;
     }
 
+    public function destroy($id){
+        $settings = Settings::find($id);
+        if ($settings->delete()){
+            return back()->with('success','işlem Başarılı');
+        }
+        return back()->with('error','işlem Başarısız !!!');
+    }
+
+
+
 }
