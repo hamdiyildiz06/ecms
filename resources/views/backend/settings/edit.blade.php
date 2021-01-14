@@ -7,7 +7,7 @@
                 <h3 class="box-title">Settings</h3>
             </div>
             <div class="box-body">
-                <form action="" method="" enctype="multipart/form-data">
+                <form action="{{route('settings.Update',['id'=>$settings->id])}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>Açılama</label>
