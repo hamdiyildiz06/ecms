@@ -246,5 +246,11 @@ desired effect
         alertify.success('{{session('error')}}');
     </script>
 @endif
+
+@foreach($errors->all() as $error)
+    <script>
+        alertify.error('{{$error}}');
+    </script>
+@endforeach
 </body>
 </html>

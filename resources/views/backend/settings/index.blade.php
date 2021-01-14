@@ -23,6 +23,13 @@
                         <tr id="item-{{$adminSettings->id}}">
                             <td>{{$adminSettings->id}}</td>
                             <td class="sortable">{{$adminSettings['settings_description']}}</td>
+                            <td>
+                                @if($adminSettings->settings_type == "file")
+                                    <img width="100" src="/images/settings/{{$adminSettings->settings_value}}" alt="">
+                                @else
+                                    {{$adminSettings->settings_value}}
+                                @endif
+                            </td>
                             <td>{{$adminSettings->settings_value}}</td>
                             <td>{{$adminSettings->settings_key}}</td>
                             <td>{{$adminSettings->settings_type}}</td>

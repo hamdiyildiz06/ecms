@@ -42,6 +42,18 @@ class SettingsController extends Controller
     }
 
     public function update(Request $request,$id){
+
+        if ($request->hasFile('settings_value')){
+            $request->validate([
+                'settings_value' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            ]);
+
+            $file_name = uniqid().'.'.$request->settings_value->getClientOriginalExtension();
+            $request->settings_value->move(public_path('images/settings'),$file_name);
+            $request->settings_value = $file_name;
+        }
+
+
         $settings = Settings::where('id',$id)->update(
             [
                 "settings_value" => $request->settings_value
@@ -49,6 +61,11 @@ class SettingsController extends Controller
         );
 
         if ($settings){
+
+            $path = 'images/settings/'.$request->old_file;
+            if (file_exists($path)){
+                @unlink(public_path($path));
+            }
             return back()->with('success','Düzenleme işlemi Başarılı');
         }
         return back()->with('error','Düzenleme işlemi Başarısız !!!');

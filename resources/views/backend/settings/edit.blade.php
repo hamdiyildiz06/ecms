@@ -23,11 +23,11 @@
                             <label>Resim Seç</label>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <input class="form-control" type="file">
+                                    <input class="form-control" name="settings_value" required type="file">
                                 </div>
                             </div>
                         </div>
-                    @else
+                    @endif
                         <div class="form-group">
                             <label>İçerik</label>
                             <div class="row">
@@ -42,15 +42,24 @@
 
                                     @if($settings->settings_type == "ckeditor")
                                         <textarea name="settings_value" id="editor1" >{{$settings->settings_value}}</textarea>
+                                            <script>
+                                                CKEDITOR.replace('editor1');
+                                            </script>
                                     @endif
 
-                                        <script>
-                                            CKEDITOR.replace('editor1');
-                                        </script>
-                                </div>
+                                    @if($settings->settings_type == "file")
+                                        <img width="100" src="/images/settings/{{$settings->settings_value}}" alt="">
+                                    @endif
+
+
+                                    </div>
                             </div>
                         </div>
+
+                    @if($settings->settings_type == "file")
+                        <input type="hidden" name="old_file" value="{{$settings->settings_value}}">
                     @endif
+
                     <div class="box-footer" align="right">
                         <button type="submit" class="btn btn-success">Düzenle</button>
                     </div>
