@@ -26,7 +26,7 @@
                             <td>{{$adminSettings->settings_value}}</td>
                             <td>{{$adminSettings->settings_key}}</td>
                             <td>{{$adminSettings->settings_type}}</td>
-                            <td width="5"><a href="javascript:void(0)"><i class="fa fa-pencil-square"></i></a></td>
+                            <td width="5"><a href="{{route('settings.Edit',['id'=>$adminSettings->id])}}"><i class="fa fa-pencil-square"></i></a></td>
                             <td width="5">
                                 @if($adminSettings->settings_delete)
                                     <a href="javascript:void(0)"><i id="{{$adminSettings->id}}" class="fa fa-trash-o"></i></a>
@@ -40,7 +40,6 @@
             </div>
         </div>
     </section>
-
     <script type="text/javascript">
         $(function(){
 
@@ -86,9 +85,6 @@
             )
         });
     </script>
-
-
-
 @endsection
 @section('css')@endsection
 @section('js')@endsection

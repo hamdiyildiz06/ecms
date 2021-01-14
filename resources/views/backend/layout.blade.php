@@ -19,7 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="/backend/dist/css/AdminLTE.min.css">
 
-    <!-- JavaScript -->
+    <!-- JavsssssaScript -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <!-- CSS -->
@@ -50,7 +50,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <!-- CKeditor -->
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+    <!-- custom.css -->
     <link rel="stylesheet" href="/backend/custom/css/custom.css">
     <!-- Google Font -->
     <link rel="stylesheet"
