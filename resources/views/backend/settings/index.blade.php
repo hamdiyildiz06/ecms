@@ -58,13 +58,12 @@
                         success: function (msg) {
                             // console.log(msg);
                             if (msg) {
-                                alert("işlem başarılı");
+                                alertify.success("işlem başarılı");
                             } else {
-                                alert("işlem başarısız");
+                                alertify.error("işlem başarısız");
                             }
                         }
                     });
-
                 }
             });
             $('#sortable').disableSelection();
