@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Blogs;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -38,8 +39,46 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $blog = $request->all();
-        dd($blog);
+
+        if (strlen($request->blog_slug) > 3){
+            $slug = Str::slug($request->blog_slug, '-');
+        }else{
+            $slug = Str::slug($request->blog_title, '-');
+        }
+
+        if ($request->hasFile('blog_file')){
+            $request->validate([
+                'blog_file' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            ]);
+
+            $images = pathinfo($request->file('blog_file')->getClientOriginalName());
+            $image_name = $images['filename'];
+            $image_extension = $request->file('blog_file')->getClientOriginalExtension();
+            $file_name = $image_name.'-'.rand(11111,99999).'.'.$image_extension;
+            $request->blog_file->move(public_path('/images/blogs'),$file_name);
+
+        }else{
+            $file_name = null;
+        }
+
+
+
+
+        $blog = Blogs::insert(
+          [
+              "blog_title" => $request->blog_title,
+              "blog_slug" => $slug,
+              "blog_file" => $file_name,
+              "blog_must" => 1,
+              "blog_content" => $request->blog_content,
+              "blog_status" => $request->blog_status,
+          ]
+        );
+
+        if ($blog){
+            return redirect(route('blog.index'))->with('success','İşlem Başarılı');
+        }
+        return back()->with('error','İşlem Başarısız !!!');
     }
 
     /**

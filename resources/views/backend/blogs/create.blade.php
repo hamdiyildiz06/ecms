@@ -22,7 +22,7 @@
                         <label>Başlık</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" name="blog_title" type="text">
+                                <input class="form-control" name="blog_title" required type="text">
                             </div>
                         </div>
                     </div>

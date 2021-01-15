@@ -19,7 +19,7 @@ class CreateBlogsTable extends Migration
             $table->string('blog_slug')->nullable();
             $table->string('blog_file')->nullable();
             $table->integer('blog_must');
-            $table->text('blog_content');
+            $table->text('blog_content')->nullable();
             $table->enum('blog_status',['0','1'])->default(1);
             $table->timestamps();
         });
