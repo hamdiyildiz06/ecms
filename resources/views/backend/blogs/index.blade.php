@@ -4,41 +4,24 @@
 
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Settings</h3>
+                <h3 class="box-title">Blog</h3>
             </div>
             <div class="box-body">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Açıklama</th>
-                        <th>İçerik</th>
-                        <th>Anahtar Değer</th>
-                        <th>Type</th>
+                        <th>Başlık</th>
                         <th></th>
                         <th></th>
                     </tr>
                     <tbody id="sortable">
-                    @foreach($data['adminSettings'] as $adminSettings)
-                        <tr id="item-{{$adminSettings->id}}">
-                            <td>{{$adminSettings->id}}</td>
-                            <td class="sortable">{{$adminSettings['settings_description']}}</td>
-                            <td>
-                                @if($adminSettings->settings_type == "file")
-                                    <img width="100" src="/images/settings/{{$adminSettings->settings_value}}" alt="">
-                                @else
-                                    {{$adminSettings->settings_value}}
-                                @endif
-                            </td>
-                            <td>{{$adminSettings->settings_value}}</td>
-                            <td>{{$adminSettings->settings_key}}</td>
-                            <td>{{$adminSettings->settings_type}}</td>
-                            <td width="5"><a href="{{route('settings.Edit',['id'=>$adminSettings->id])}}"><i class="fa fa-pencil-square"></i></a></td>
-                            <td width="5">
-                                @if($adminSettings->settings_delete)
-                                    <a href="javascript:void(0)"><i id="{{$adminSettings->id}}" class="fa fa-trash-o"></i></a>
-                                @endif
-                            </td>
+                    @foreach($data['blog'] as $blog)
+                        <tr id="item-{{$blog->id}}">
+                            <td width="5">{{$blog->id}}</td>
+                            <td class="sortable">{{$blog['blog_title']}}</td>
+                            <td width="5"><a href="{{route('settings.Edit',['id'=>$blog->id])}}"><i class="fa fa-pencil-square"></i></a></td>
+                            <td width="5"><a href="javascript:void(0)"><i id="{{$blog->id}}" class="fa fa-trash-o"></i></a></td>
                         </tr>
                     @endforeach
                     </tbody>
