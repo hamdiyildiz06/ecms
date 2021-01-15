@@ -47,7 +47,7 @@
                     $.ajax({
                         type: "POST",
                         data: data,
-                        url: "{{route('settings.Sortable')}}",
+                        url: "{{route('blog.Sortable')}}",
                         success: function (msg) {
                             // console.log(msg);
                             if (msg) {
@@ -67,7 +67,20 @@
             destroy_id = $(this).attr('id');
             alertify.confirm('Silme İşlemini Onaylayın','Bu İşlem Geri Alınamaz',
                 function (){
-                    location.href = "/nedmin/settings/delete/" + destroy_id;
+                  //  location.href = "/nedmin/settings/delete/" + destroy_id;
+
+                    $.ajax({
+                        type:"DELETE",
+                        url:"blog/"+destroy_id,
+                        success: function (msg){
+                            if (msg) {
+                                $("#item-"+destroy_id).remove();
+                                alertify.success("işlem başarılı");
+                            } else {
+                                alertify.error("işlem başarısız");
+                            }
+                        }
+                    });
                 },
                 function (){
                     alertify.error("Silme İşlemi İptal Edildi");

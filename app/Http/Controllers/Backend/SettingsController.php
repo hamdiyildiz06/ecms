@@ -29,7 +29,7 @@ class SettingsController extends Controller
     }
 
     public function destroy($id){
-        $settings = Settings::find($id);
+        $settings = Settings::find(intval($id));
         if ($settings->delete()){
             return back()->with('success','işlem Başarılı');
         }

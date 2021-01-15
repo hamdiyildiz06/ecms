@@ -83,6 +83,24 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $blog = Blogs::find(intval($id));
+        if ($blog->delete()){
+            echo 1;
+        }
+       echo 0;
+    }
+
+    public function sortable()
+    {
+//        print_r($_POST['item']);
+
+        foreach ($_POST['item'] as $key => $value)
+        {
+            $blog=Blogs::find(intval($value));
+            $blog->blog_must=intval($key);
+            $blog->save();
+        }
+
+        echo true;
     }
 }
