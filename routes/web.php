@@ -28,5 +28,12 @@ Route::namespace('Backend')->group(function (){
     });
 });
 
+Route::namespace('Backend')->group(function (){
+    Route::prefix('nedmin')->group(function (){
+        Route::resource('blog','BlogController');
+    });
+});
+
+
 
 
