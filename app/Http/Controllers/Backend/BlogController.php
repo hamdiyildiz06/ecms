@@ -100,7 +100,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $blogs = Blogs::where('id',$id)->first();
+        return view('backend.blogs.edit')->with('blogs',$blogs);
     }
 
     /**
@@ -112,7 +113,57 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        if (strlen($request->blog_slug) > 3){
+            $slug = Str::slug($request->blog_slug, '-');
+        }else{
+            $slug = Str::slug($request->blog_title, '-');
+        }
+
+        if ($request->hasFile('blog_file')){
+            $request->validate([
+                'blog_file' => 'required|image|mimes:jpg,jpeg,png|max:2048'
+            ]);
+
+            $images = pathinfo($request->file('blog_file')->getClientOriginalName());
+            $image_name = $images['filename'];
+            $image_extension = $request->file('blog_file')->getClientOriginalExtension();
+            $file_name = $image_name.'-'.rand(11111,99999).'.'.$image_extension;
+            $request->blog_file->move(public_path('/images/blogs'),$file_name);
+
+            $blog = Blogs::where('id',$id)->update(
+                [
+                    "blog_title" => $request->blog_title,
+                    "blog_slug" => $slug,
+                    "blog_file" => $file_name,
+                    "blog_must" => 1,
+                    "blog_content" => $request->blog_content,
+                    "blog_status" => $request->blog_status,
+                ]
+            );
+
+            $path = "images/blogs/".$request->old_file;
+            if (file_exists($path)){
+                @unlink(public_path($path));
+            }
+
+        }else{
+
+            $blog = Blogs::where('id',$id)->update(
+                [
+                    "blog_title" => $request->blog_title,
+                    "blog_slug" => $slug,
+                    "blog_must" => 1,
+                    "blog_content" => $request->blog_content,
+                    "blog_status" => $request->blog_status,
+                ]
+            );
+        }
+
+        if ($blog){
+            return back()->with('success','İşlem Başarılı');
+        }
+        return back()->with('error','İşlem Başarısız !!!');
     }
 
     /**
