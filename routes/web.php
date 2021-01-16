@@ -38,6 +38,10 @@ Route::namespace('Backend')->group(function (){
         //Page
         Route::post('/page/sortable','PageController@sortable')->name('page.Sortable');
         Route::resource('page','PageController');
+
+        //Slider
+        Route::post('/slider/sortable','SliderController@sortable')->name('slider.Sortable');
+        Route::resource('slider','SliderController');
     });
 });
 
