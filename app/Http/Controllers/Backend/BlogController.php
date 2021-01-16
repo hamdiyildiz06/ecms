@@ -139,6 +139,7 @@ class BlogController extends Controller
                     "blog_must" => 1,
                     "blog_content" => $request->blog_content,
                     "blog_status" => $request->blog_status,
+                    "blog_must" => $request->blog_must,
                 ]
             );
 
@@ -156,6 +157,7 @@ class BlogController extends Controller
                     "blog_must" => 1,
                     "blog_content" => $request->blog_content,
                     "blog_status" => $request->blog_status,
+                    "blog_must" => $request->blog_must,
                 ]
             );
         }
