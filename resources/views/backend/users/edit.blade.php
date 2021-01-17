@@ -32,40 +32,29 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Başlık</label>
+                        <label>Ad Soyad</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" name="user_title" value="{{$users->user_title}}" required type="text">
+                                <input class="form-control" name="name" value="{{$users->name}}" required type="text">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Slug</label>
+                        <label>Kullanıcı Adı <small>( E-mail )</small></label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" name="user_slug" value="{{$users->user_slug}}" type="text">
+                                <input class="form-control" name="email" value="{{$users->email}}" type="email">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Url</label>
+                        <label>Şifre</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" name="user_url" value="{{$users->user_url}}" type="url">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>İçerik</label>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <textarea name="user_content" id="editor1">{{$users->user_content}}</textarea>
-                                <script>
-                                    CKEDITOR.replace('editor1');
-                                </script>
+                                <input class="form-control" name="password" type="password">
+                                <small>Şifreyi Değiştirmek istemiyorsanız boş bırakabilirsiniz...</small>
                             </div>
                         </div>
                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -40,16 +41,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_title'=>'required',
-            'user_content'=>'required',
-            'user_url'=>'required|active_url'
+            'name'=>'required',
+            'email'=>'required|email',
+            'password'=>'required|min:6'
         ]);
 
-        if (strlen($request->user_slug) > 3){
-            $slug = Str::slug($request->user_slug, '-');
-        }else{
-            $slug = Str::slug($request->user_title, '-');
-        }
+
 
         if ($request->hasFile('user_file')){
             $request->validate([
@@ -71,13 +68,12 @@ class UserController extends Controller
 
         $user = User::insert(
             [
-                "user_title" => $request->user_title,
-                "user_slug" => $slug,
-                "user_url" => $request->user_url,
+                "name" => $request->name,
+                "email" => $request->email,
+                "password" => Hash::make($request->password),
                 "user_file" => $file_name,
                 "user_must" => 1,
-                "user_content" => $request->user_content,
-                "user_status" => $request->user_status,
+                "user_status" => $request->user_status
             ]
         );
 
@@ -120,16 +116,9 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_title'=>'required',
-            'user_content'=>'required',
-            'user_url'=>'required|active_url'
+            'name'=>'required',
+            'email'=>'required|email',
         ]);
-
-        if (strlen($request->user_slug) > 3){
-            $slug = Str::slug($request->user_slug, '-');
-        }else{
-            $slug = Str::slug($request->user_title, '-');
-        }
 
         if ($request->hasFile('user_file')){
             $request->validate([
@@ -142,18 +131,35 @@ class UserController extends Controller
             $file_name = $image_name.'-'.rand(11111,99999).'.'.$image_extension;
             $request->user_file->move(public_path('/images/users'),$file_name);
 
-            $user = User::where('id',$id)->update(
-                [
-                    "user_title" => $request->user_title,
-                    "user_slug" => $slug,
-                    "user_url" => $request->user_url,
-                    "user_file" => $file_name,
-                    "user_must" => 1,
-                    "user_content" => $request->user_content,
-                    "user_status" => $request->user_status,
-                    "user_must" => $request->user_must,
-                ]
-            );
+            if (strlen($request->password) > 0){
+
+                $request->validate([
+                    'password'=>'required|min:6'
+                ]);
+
+                $user = User::where('id',$id)->update(
+                    [
+                        "name" => $request->name,
+                        "email" => $request->email,
+                        "password" => Hash::make($request->password),
+                        "user_file" => $file_name,
+                        "user_must" => $request->user_must,
+                        "user_status" => $request->user_status
+                    ]
+                );
+            }else{
+                $user = User::where('id',$id)->update(
+                    [
+                        "name" => $request->name,
+                        "email" => $request->email,
+                        "user_file" => $file_name,
+                        "user_must" => $request->user_must,
+                        "user_status" => $request->user_status
+                    ]
+                );
+            }
+
+
 
             $path = "images/users/".$request->old_file;
             if (file_exists($path)){
@@ -162,17 +168,31 @@ class UserController extends Controller
 
         }else{
 
-            $user = User::where('id',$id)->update(
-                [
-                    "user_title" => $request->user_title,
-                    "user_slug" => $slug,
-                    "user_url" => $request->user_url,
-                    "user_must" => 1,
-                    "user_content" => $request->user_content,
-                    "user_status" => $request->user_status,
-                    "user_must" => $request->user_must,
-                ]
-            );
+            if (strlen($request->password) > 0){
+
+                $request->validate([
+                    'password'=>'required|min:6'
+                ]);
+
+                $user = User::where('id',$id)->update(
+                    [
+                        "name" => $request->name,
+                        "email" => $request->email,
+                        "password" => Hash::make($request->password),
+                        "user_must" => $request->user_must,
+                        "user_status" => $request->user_status
+                    ]
+                );
+            }else{
+                $user = User::where('id',$id)->update(
+                    [
+                        "name" => $request->name,
+                        "email" => $request->email,
+                        "user_must" => $request->user_must,
+                        "user_status" => $request->user_status
+                    ]
+                );
+            }
         }
 
         if ($user){
