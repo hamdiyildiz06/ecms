@@ -39,6 +39,10 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'slider_title'=>'required',
+            'slider_content'=>'required',
+        ]);
 
         if (strlen($request->page_slug) > 3){
             $slug = Str::slug($request->page_slug, '-');
@@ -113,6 +117,10 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'slider_title'=>'required',
+            'slider_content'=>'required'
+        ]);
 
         if (strlen($request->page_slug) > 3){
             $slug = Str::slug($request->page_slug, '-');

@@ -42,6 +42,10 @@ Route::namespace('Backend')->group(function (){
         //Slider
         Route::post('/slider/sortable','SliderController@sortable')->name('slider.Sortable');
         Route::resource('slider','SliderController');
+
+        //User
+        Route::post('/user/sortable','UserController@sortable')->name('user.Sortable');
+        Route::resource('user','UserController');
     });
 });
 

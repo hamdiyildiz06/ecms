@@ -173,8 +173,9 @@ desired effect
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active"><a href="{{route('nedmin.Index')}}"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
                 <li><a href="{{route('blog.index')}}"><i class="fa fa-paper-plane"></i> <span>Blog</span></a></li>
-                <li><a href="{{route('page.index')}}"><i class="fa fa-paper-plane"></i> <span>Page</span></a></li>
+                <li><a href="{{route('page.index')}}"><i class="fa fa-pagelines"></i> <span>Page</span></a></li>
                 <li><a href="{{route('slider.index')}}"><i class="fa fa-paper-plane"></i> <span>slider</span></a></li>
+                <li><a href="{{route('user.index')}}"><i class="fa fa-user"></i> <span>User</span></a></li>
                 <li><a href="{{route('settings.Index')}}"><i class="fa fa-cog"></i> <span>Ayarlar</span></a></li>
 
 

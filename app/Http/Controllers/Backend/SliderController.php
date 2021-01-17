@@ -42,7 +42,7 @@ class SliderController extends Controller
         $request->validate([
             'slider_title'=>'required',
             'slider_content'=>'required',
-            'slider_url'=>'required|active_url',
+            'slider_url'=>'required|active_url'
         ]);
 
         if (strlen($request->slider_slug) > 3){
@@ -122,7 +122,7 @@ class SliderController extends Controller
         $request->validate([
             'slider_title'=>'required',
             'slider_content'=>'required',
-            'slider_url'=>'required|active_url',
+            'slider_url'=>'required|active_url'
         ]);
 
         if (strlen($request->slider_slug) > 3){
