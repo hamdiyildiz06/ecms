@@ -11,9 +11,9 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Route::get('nedmin','Backend\DefaultController@index')->name('nedmin.Index');
@@ -52,3 +52,7 @@ Route::namespace('Backend')->group(function (){
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
