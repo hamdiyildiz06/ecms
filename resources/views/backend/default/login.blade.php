@@ -50,6 +50,8 @@
 
         @if(Session::has('error'))
             <div class="alert alert-danger">{{session('error')}}</div>
+        @elseif(Session::has('success'))
+            <div class="alert alert-success">{{session('success')}}</div>
         @endif
 
         <form action="{{route('nedmin.Authenticate')}}" method="post">

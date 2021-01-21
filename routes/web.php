@@ -19,8 +19,9 @@ Route::get('/', function () {
 Route::namespace('Backend')->group(function () {
 
     Route::prefix('nedmin')->group(function () {
-        Route::get('/', 'DefaultController@index')->name('nedmin.Index')->middleware('admin');
-        Route::get('/login', 'DefaultController@login')->name('nedmin.Login');
+        Route::get('/dashboard', 'DefaultController@index')->name('nedmin.Index')->middleware('admin');
+        Route::get('/', 'DefaultController@login')->name('nedmin.Login');
+        Route::get('/logout', 'DefaultController@logout')->name('nedmin.Logout')->middleware('admin');
         Route::post('/login', 'DefaultController@authenticate')->name('nedmin.Authenticate');
     });
 

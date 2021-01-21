@@ -135,7 +135,7 @@ desired effect
                                     <a href="#" class="btn btn-default btn-flat">Profil Düzenle</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Çıkış</a>
+                                    <a href="{{route('nedmin.Logout')}}" class="btn btn-default btn-flat">Çıkış</a>
                                 </div>
                             </li>
                         </ul>

@@ -28,4 +28,9 @@ class DefaultController extends Controller
             return back()->with('error','Hatalı Kullanıcı');
         }
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect(route('nedmin.Login'))->with('success','Güvenli Çıkış Yapıldı');
+    }
 }
