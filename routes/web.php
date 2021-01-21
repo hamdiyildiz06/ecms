@@ -16,51 +16,50 @@ Route::get('/', function () {
 });
 
 
+Route::namespace('Backend')->group(function () {
 
-
-Route::namespace('Backend')->group(function (){
-
-    Route::prefix('nedmin')->group(function (){
-        Route::get('/','DefaultController@index')->name('nedmin.Index');
-        Route::get('/login','DefaultController@login')->name('nedmin.Login');
-        Route::post('/login','DefaultController@authenticate')->name('nedmin.Authenticate');
+    Route::prefix('nedmin')->group(function () {
+        Route::get('/', 'DefaultController@index')->name('nedmin.Index')->middleware('admin');
+        Route::get('/login', 'DefaultController@login')->name('nedmin.Login');
+        Route::post('/login', 'DefaultController@authenticate')->name('nedmin.Authenticate');
     });
 
 
-    Route::prefix('nedmin/settings')->group(function (){
-        Route::get('/','SettingsController@index')->name('settings.Index');
-        Route::post('','SettingsController@sortable')->name('settings.Sortable');
-        Route::get('/delete/{id}','SettingsController@destroy')->name('settings.Destroy');
-        Route::get('/edit/{id}','SettingsController@edit')->name('settings.Edit');
-        Route::post('update/{id}','SettingsController@update')->name('settings.Update');
+    Route::middleware(['admin'])->group(function () {
+        Route::prefix('nedmin/settings')->group(function () {
+            Route::get('/', 'SettingsController@index')->name('settings.Index');
+            Route::post('', 'SettingsController@sortable')->name('settings.Sortable');
+            Route::get('/delete/{id}', 'SettingsController@destroy')->name('settings.Destroy');
+            Route::get('/edit/{id}', 'SettingsController@edit')->name('settings.Edit');
+            Route::post('update/{id}', 'SettingsController@update')->name('settings.Update');
+        });
     });
 
 
 });
 
-Route::namespace('Backend')->group(function (){
-    Route::prefix('nedmin')->group(function (){
+Route::namespace('Backend')->group(function () {
+    Route::prefix('nedmin')->group(function () {
+        Route::middleware(['admin'])->group(function () {
 
-        //Blog
-        Route::post('/blog/sortable','BlogController@sortable')->name('blog.Sortable');
-        Route::resource('blog','BlogController');
+            //Blog
+            Route::post('/blog/sortable', 'BlogController@sortable')->name('blog.Sortable');
+            Route::resource('blog', 'BlogController');
 
-        //Page
-        Route::post('/page/sortable','PageController@sortable')->name('page.Sortable');
-        Route::resource('page','PageController');
+            //Page
+            Route::post('/page/sortable', 'PageController@sortable')->name('page.Sortable');
+            Route::resource('page', 'PageController');
 
-        //Slider
-        Route::post('/slider/sortable','SliderController@sortable')->name('slider.Sortable');
-        Route::resource('slider','SliderController');
+            //Slider
+            Route::post('/slider/sortable', 'SliderController@sortable')->name('slider.Sortable');
+            Route::resource('slider', 'SliderController');
 
-        //User
-        Route::post('/user/sortable','UserController@sortable')->name('user.Sortable');
-        Route::resource('user','UserController');
+            //User
+            Route::post('/user/sortable', 'UserController@sortable')->name('user.Sortable');
+            Route::resource('user', 'UserController');
+        });
     });
 });
-
-
-
 
 
 Auth::routes();
