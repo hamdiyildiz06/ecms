@@ -47,7 +47,7 @@
         @foreach($data['blog'] as $blog)
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-                <a href="#"><img width="100" height="200" class="card-img-top" src="images/blogs/{{$blog->blog_file}}" alt=""></a>
+                <a href="{{route('blog.Detail',$blog->blog_slug)}}"><img width="100" height="200" class="card-img-top" src="images/blogs/{{$blog->blog_file}}" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
                         <a href="#">{{$blog->blog_title}}</a>
