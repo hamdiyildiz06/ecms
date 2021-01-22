@@ -3,33 +3,28 @@
 @section('content')
 <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            @foreach($data['slider'] as $slider)
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}" {{$loop->first ? "class='active'" : null}} ></li>
+            @endforeach
         </ol>
+
         <div class="carousel-inner" role="listbox">
-            <!-- Slide One - Set the background image for this slide in the line below -->
-            <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+
+            @foreach($data['slider'] as $slider)
+            <div class="carousel-item {{$loop->first ? 'active' : null}}" style="background-image: url('images/sliders/{{$slider->slider_file}}')">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>First Slide</h3>
-                    <p>This is a description for the first slide.</p>
+                    @if(strlen($slider->slider_url) > 1)
+                        <h3><a href="{{$slider->slider_url}}"> {{$slider->slider_title}} </a></h3>
+                    @else
+                        <h3>{{$slider->slider_title}}</h3>
+                    @endif
+                    <p>{{$slider->slider_content}}</p>
                 </div>
             </div>
-            <!-- Slide Two - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Second Slide</h3>
-                    <p>This is a description for the second slide.</p>
-                </div>
-            </div>
-            <!-- Slide Three - Set the background image for this slide in the line below -->
-            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Third Slide</h3>
-                    <p>This is a description for the third slide.</p>
-                </div>
-            </div>
+            @endforeach
+
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
