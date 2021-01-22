@@ -19,6 +19,7 @@
 
 Route::namespace('Frontend')->group(function () {
     Route::get('/','DefaultController@index')->name('home.Index');
+    Route::get('/blog','BlogController@index')->name('blog.Index');
 });
 
 Route::namespace('Backend')->group(function () {
