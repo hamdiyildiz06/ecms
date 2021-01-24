@@ -35,7 +35,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('blog.Index')}}">Blog</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="/page/{{$slug}}">Sayfalar</a>
+                </li>
             </ul>
         </div>
     </div>
