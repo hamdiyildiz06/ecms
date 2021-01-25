@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="{{$decription}}">
     <meta name="author" content="">
 
     <title>@yield('title')</title>
@@ -48,7 +48,7 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+        <p class="m-0 text-center text-white">{{$footer}}</p>
     </div>
     <!-- /.container -->
 </footer>
@@ -58,5 +58,4 @@
 <script src="/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>
