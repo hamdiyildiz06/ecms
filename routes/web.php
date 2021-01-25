@@ -29,6 +29,7 @@ Route::namespace('Frontend')->group(function () {
 
     // Contact
     Route::get('/contact','DefaultController@contact')->name('contact.Detail');
+    Route::post('/contact','DefaultController@sendMail');
 
 });
 

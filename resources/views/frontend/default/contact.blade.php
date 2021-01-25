@@ -16,35 +16,59 @@
             <li class="breadcrumb-item active">Contact</li>
         </ol>
 
+
+
         <!-- Content Row -->
         <div class="row">
             <!-- Map Column -->
             <div class="col-lg-8 mb-4">
+
+                @if (Session::has('success'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            <li>{{ session('success') }}</li>
+                        </ul>
+                    </div>
+                    <br>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <br>
+                @endif
                 <h3>İletişim Formu</h3>
-                <form name="sentMessage" id="contactForm" novalidate>
+                <form name="sentMessage" id="contactForm"  method="post">
+                    @CSRF
                     <div class="control-group form-group">
                         <div class="controls">
-                            <label>Full Name:</label>
-                            <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
+                            <label>Ad Soyad:</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Ad Soyad" required>
                             <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
-                            <label>Phone Number:</label>
-                            <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+                            <label>E-mail:</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="E-mail Adresiniz" required>
+                            <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
-                            <label>Email Address:</label>
-                            <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+                            <label>Telefon:</label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefon Numaranız" required>
+                            <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="control-group form-group">
                         <div class="controls">
-                            <label>Message:</label>
-                            <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                            <label>Mesajınız:</label>
+                            <textarea rows="10" cols="100" class="form-control" id="message" name="message" maxlength="999" style="resize:none" placeholder="Lütfen Mesajınızı Girniz"></textarea>
                         </div>
                     </div>
                     <div id="success"></div>
