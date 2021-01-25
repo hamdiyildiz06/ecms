@@ -26,6 +26,10 @@ Route::namespace('Frontend')->group(function () {
 
     // Page
     Route::get('/page/{slug}','PageController@detail')->name('page.Detail');
+
+    // Contact
+    Route::get('/contact','DefaultController@contact')->name('contact.Detail');
+
 });
 
 Route::namespace('Backend')->group(function () {

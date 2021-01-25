@@ -4,9 +4,9 @@
     <list default="true" id="4bd7ed99-57b4-4b27-a068-ce8ec934366e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Share.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Share.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/default/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/default/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Frontend/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Frontend/DefaultController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +125,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/frontend/default" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -137,6 +137,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\ecms\resources\views\frontend\default" />
       <recent name="C:\xampp\htdocs\ecms\resources\views\frontend" />
     </key>
   </component>
@@ -154,7 +155,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611237877586</updated>
-      <workItem from="1611237878729" duration="36109000" />
+      <workItem from="1611237878729" duration="38049000" />
     </task>
     <servers />
   </component>

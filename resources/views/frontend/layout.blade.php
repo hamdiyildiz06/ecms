@@ -16,6 +16,14 @@
     <!-- Custom styles for this template -->
     <link href="/frontend/css/modern-business.css" rel="stylesheet">
 
+    <!-- font-awesome/5.15.2/css/all.min.css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet">
+
+
+
+
+
+
 </head>
 
 <body>
@@ -37,6 +45,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/page/{{$slug}}">Sayfalar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('contact.Detail')}}">İletişim</a>
                 </li>
             </ul>
         </div>
