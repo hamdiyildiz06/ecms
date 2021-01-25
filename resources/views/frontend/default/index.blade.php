@@ -1,6 +1,6 @@
 @extends('frontend.layout')
-@section('title','Anasayfa Başlığı')
 @section('content')
+    <h1 style="display: none">{{$title}}</h1>
 <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 

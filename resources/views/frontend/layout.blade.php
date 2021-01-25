@@ -67,6 +67,7 @@
 <!-- Bootstrap core JavaScript -->
 <script src="/frontend/vendor/jquery/jquery.min.js"></script>
 <script src="/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/js/custom.js"></script>
 
 </body>
 </html>
